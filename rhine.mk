@@ -196,6 +196,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.sensors.georv=true \
     ro.qualcomm.sensors.smd=sony
 
+# ART
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.dex2oat-filter=speed \
+    dalvik.vm.dex2oat-swap=false \
+    dalvik.vm.image-dex2oat-filter=speed
+
+# ART
+PRODUCT_DEX_PREOPT_DEFAULT_FLAGS := \
+    --compiler-filter=speed
+
+$(call add-product-dex-preopt-module-config,services,--compiler-filter=speed)
+
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd \
